@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _playerName;
+    [SerializeField] private TextMeshProUGUI _highScore;
+
+    private void Start()
+    {
+        var gameManager = GameManager.Instance;
+        _highScore.text = $"HiScore: {gameManager.GetHiScorePlayer()} : {gameManager.GetHighScore()}";
+
+    }
 
     public void StartGame()
     {

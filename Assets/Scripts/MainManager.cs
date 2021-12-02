@@ -91,7 +91,7 @@ public class MainManager : MonoBehaviour
 
     private void UpdateHighScore()
     {
-        highScoreText.text = $"HiScore: {gameManager.GetName()} : {gameManager.GetHighScore()}";
+        highScoreText.text = $"HiScore: {gameManager.GetHiScorePlayer()} : {gameManager.GetHighScore()}";
     }
 
 }
