@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerData> topPlayers;
     private string _lastPlayerName;
     public PlayerData playerData;
+    public List<Brick> remainingBricks;
 
     private void Awake()
     {

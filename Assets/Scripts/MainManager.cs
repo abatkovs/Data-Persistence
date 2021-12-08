@@ -62,6 +62,10 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.remainingBricks.Count == 0)
+        {
+            GenerateBricks();
+        }
         if (!_started)
         {
             if (Input.GetKeyDown(KeyCode.Space))
