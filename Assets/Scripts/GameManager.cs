@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public List<PlayerData> topPlayers;
     private string _lastPlayerName;
     public PlayerData playerData;
-    
+
     private void Awake()
     {
         LoadData();
@@ -109,11 +110,7 @@ public class GameManager : MonoBehaviour
     {
         _playerName = playerName;
     }
-
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
+    
 /*
  * p1 : 100
  * p2 : 50
@@ -153,6 +150,21 @@ public class GameManager : MonoBehaviour
     private void ResetScore()
     {
         score = 0;
+    }
+
+    /*
+     * 0 - MainMenu
+     * 1 - Game
+     * 2 - Highscores
+     */
+    public void LoadSceneX(int sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
+    }
+    
+    private void OnApplicationQuit()
+    {
+        SaveData();
     }
 }
 

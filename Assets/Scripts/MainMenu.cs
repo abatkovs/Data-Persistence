@@ -35,6 +35,11 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.SetPlayerName(_playerName.text);
         SceneManager.LoadScene(1);
     }
+
+    public void LoadHighscores()
+    {
+        SceneManager.LoadScene(2);
+    }
     
     public void ExitGame(){
         GameManager.Instance.SaveData(); 
