@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 public class MainManager : MonoBehaviour
 {
     private GameManager gameManager;
+
+    [SerializeField] TextMeshProUGUI _topPlayersList;
     
     public Brick brickPrefab;
     public int lineCount = 6;
@@ -28,11 +30,18 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
-        GenerateBricks();
+        
         gameManager = GameManager.Instance;
-        UpdateHighScore();
+        
     }
-    
+
+    private void Start()
+    {
+        GenerateBricks();
+        UpdateHighScore();
+        _topPlayersList.text = gameManager.UpdateTopPlayers();
+    }
+
     private void GenerateBricks()
     {
         const float step = 0.6f;
@@ -87,11 +96,16 @@ public class MainManager : MonoBehaviour
         gameOverText.SetActive(true);
         UpdateHighScore();
         gameManager.score = _points;
+        //_topPlayersList.text = gameManager.UpdateTopPlayers();
     }
 
     private void UpdateHighScore()
     {
         highScoreText.text = $"HiScore: {gameManager.GetHiScorePlayer()} : {gameManager.GetHighScore()}";
+    }
+    
+    public void LoadMainMenu(){
+        SceneManager.LoadScene(0);
     }
 
 }
